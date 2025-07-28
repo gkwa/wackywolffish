@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Simple timelapse video creation script
+# Simple timelapse video creation script using Docker
 # Usage: ./stitch_timelapse.sh
 #
 # Assumes images are taken every 30 seconds
@@ -19,14 +19,18 @@ echo "Creating timelapse video from images in: $INPUT_DIR"
 echo "Output file: $OUTPUT_FILE"
 echo "Frame rate: $FRAMERATE fps"
 
-# Use ffmpeg to create video from image sequence
-ffmpeg -y \
+# Use Docker ffmpeg to create video from image sequence
+docker run --rm \
+    -v "$INPUT_DIR":/input \
+    -v "$(pwd)":/output \
+    jrottenberg/ffmpeg:latest \
+    -y \
     -pattern_type glob \
-    -i "$INPUT_DIR/IMG*.jpg" \
+    -i "/input/IMG*.jpg" \
     -r $FRAMERATE \
     -c:v libx264 \
     -pix_fmt yuv420p \
     -crf 23 \
-    "$OUTPUT_FILE"
+    "/output/$OUTPUT_FILE"
 
 echo "Timelapse video created: $OUTPUT_FILE"
