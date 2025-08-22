@@ -1,0 +1,19 @@
+{
+  "project": "Sourdough Starter Time-lapse",
+  "description": "Time-lapse documentation of sourdough starter fermentation process",
+  "videos": [
+    {
+      "filename": "sourdough-starter-10.mp4",
+      "sequence": 10,
+      "start_time": "2025-08-20T22:20:19",
+      "end_time": "2025-08-21T06:05:04",
+      "duration": "7h45m",
+      "duration_seconds": 27885,
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "75°F",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Overnight fermentation documentation showing starter activity and temperature monitoring"
+    }
+  ]
+}
