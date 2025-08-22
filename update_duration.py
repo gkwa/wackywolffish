@@ -22,7 +22,7 @@ def format_duration(duration_seconds):
     hours = duration_seconds // 3600
     minutes = (duration_seconds % 3600) // 60
     seconds = duration_seconds % 60
-    
+
     if hours > 0 and minutes > 0:
         return f"{hours}h{minutes}m"
     elif hours > 0:
@@ -36,38 +36,39 @@ def format_duration(duration_seconds):
 def update_manifest_durations(manifest_path):
     """Update duration fields in manifest JSON file."""
     manifest_file = pathlib.Path(manifest_path)
-    
+
     if not manifest_file.exists():
         raise FileNotFoundError(f"Manifest file not found: {manifest_path}")
-    
+
     # Read the manifest
-    with open(manifest_file, 'r') as f:
+    with open(manifest_file, "r", encoding="utf-8") as f:
         manifest = json.load(f)
-    
+
     # Update each video entry
     updated_count = 0
-    for video in manifest.get('videos', []):
-        if 'start_time' in video and 'end_time' in video:
+    for video in manifest.get("videos", []):
+        if "start_time" in video and "end_time" in video:
             # Calculate duration in seconds
             duration_seconds = calculate_duration_seconds(
-                video['start_time'], 
-                video['end_time']
+                video["start_time"], video["end_time"]
             )
-            
+
             # Format human-readable duration
             duration_formatted = format_duration(duration_seconds)
-            
+
             # Update the video entry
-            video['duration_seconds'] = duration_seconds
-            video['duration'] = duration_formatted
+            video["duration_seconds"] = duration_seconds
+            video["duration"] = duration_formatted
             updated_count += 1
-            
-            print(f"Updated {video.get('filename', 'unknown')}: {duration_formatted} ({duration_seconds}s)")
-    
+
+            print(
+                f"Updated {video.get('filename', 'unknown')}: {duration_formatted} ({duration_seconds}s)"
+            )
+
     # Write back to file
-    with open(manifest_file, 'w') as f:
-        json.dump(manifest, f, indent=2)
-    
+    with open(manifest_file, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+
     print(f"\nUpdated {updated_count} video entries in {manifest_path}")
     return updated_count
 
@@ -77,14 +78,14 @@ def main():
         description="Auto-populate duration fields in sourdough starter manifest"
     )
     parser.add_argument(
-        'manifest_path',
-        nargs='?',
-        default='sourdough-starter-manifest.json',
-        help='Path to the manifest JSON file (default: sourdough-starter-manifest.json)'
+        "manifest_path",
+        nargs="?",
+        default="sourdough-starter-manifest.json",
+        help="Path to the manifest JSON file (default: sourdough-starter-manifest.json)",
     )
-    
+
     args = parser.parse_args()
-    
+
     try:
         update_manifest_durations(args.manifest_path)
     except FileNotFoundError as e:
@@ -96,7 +97,7 @@ def main():
     except Exception as e:
         print(f"Unexpected error: {e}")
         return 1
-    
+
     return 0
 
 
