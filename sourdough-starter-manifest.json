@@ -7,7 +7,7 @@
       "sequence": 10,
       "start_time": "2025-08-20T22:20:19",
       "end_time": "2025-08-21T06:05:04",
-      "duration": "7h45m",
+      "duration": "7h44m",
       "duration_seconds": 27885,
       "type": "time-lapse",
       "subject": "sourdough starter fermentation",
@@ -24,7 +24,9 @@
       "subject": "sourdough starter fermentation",
       "temperature": "variable",
       "equipment": "ThermoPro digital thermometer",
-      "notes": "Extended fermentation documentation with temperature monitoring"
+      "notes": "Extended fermentation documentation with temperature monitoring",
+      "duration_seconds": 40927,
+      "duration": "11h22m"
     }
   ]
 }
