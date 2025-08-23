@@ -27,6 +27,19 @@
       "notes": "Extended fermentation documentation with temperature monitoring",
       "duration_seconds": 40927,
       "duration": "11h22m"
+    },
+    {
+      "filename": "sourdough-starter-12.mp4",
+      "sequence": 12,
+      "start_time": "2025-08-22T14:31:28",
+      "end_time": "2025-08-22T21:28:01",
+      "duration": "6h56m33s",
+      "duration_seconds": 25033,
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes":"ThermoPro was not measuring this starter during this run, it was measuring ovent temp while learning about the heatpad" 
     }
   ]
 }
