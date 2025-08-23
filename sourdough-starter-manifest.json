@@ -33,13 +33,13 @@
       "sequence": 12,
       "start_time": "2025-08-22T14:31:28",
       "end_time": "2025-08-22T21:28:01",
-      "duration": "6h56m33s",
-      "duration_seconds": 25033,
+      "duration": "6h56m",
+      "duration_seconds": 24993,
       "type": "time-lapse",
       "subject": "sourdough starter fermentation",
       "temperature": "variable",
       "equipment": "ThermoPro digital thermometer",
-      "notes":"ThermoPro was not measuring this starter during this run, it was measuring ovent temp while learning about the heatpad" 
+      "notes": "ThermoPro was not measuring this starter during this run, it was measuring ovent temp while learning about the heatpad"
     }
   ]
 }
