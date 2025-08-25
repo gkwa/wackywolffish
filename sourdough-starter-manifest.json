@@ -40,6 +40,19 @@
       "temperature": "variable",
       "equipment": "ThermoPro digital thermometer",
       "notes": "ThermoPro was not measuring this starter during this run, it was measuring ovent temp while learning about the heatpad"
+    },
+    {
+      "filename": "sourdough-starter-14.mp4",
+      "sequence": 14,
+      "start_time": "2025-08-24T13:37:48",
+      "end_time": "2025-08-25T07:15:41",
+      "duration": "17h37m",
+      "duration_seconds": 63473,
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": null,
+      "equipment": null,
+      "notes": null
     }
   ]
 }
