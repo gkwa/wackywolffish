@@ -68,6 +68,7 @@ def update_manifest_durations(manifest_path):
     # Write back to file
     with open(manifest_file, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
+        f.write('\n')
 
     print(f"\nUpdated {updated_count} video entries in {manifest_path}")
     return updated_count
