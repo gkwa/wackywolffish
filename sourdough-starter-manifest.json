@@ -137,6 +137,76 @@
       "temperature": "variable",
       "equipment": "ThermoPro digital thermometer",
       "notes": ""
+    },
+    {
+      "filename": "sourdough-starter-17.mp4",
+      "sequence": 17,
+      "start_time": "2025-09-02T19:39:58",
+      "end_time": "2025-09-03T03:13:34",
+      "duration": "7h33m",
+      "duration_seconds": 27216,
+      "ratio": "1:1:1",
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
+    },
+    {
+      "filename": "sourdough-starter-17.mp4",
+      "sequence": 17,
+      "start_time": "2025-09-02T19:39:58",
+      "end_time": "2025-09-03T05:40:12",
+      "duration": "10h",
+      "duration_seconds": 36014,
+      "ratio": "1:3:3",
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
+    },
+    {
+      "filename": "sourdough-starter-17.mp4",
+      "sequence": 17,
+      "start_time": "2025-09-02T19:39:58",
+      "end_time": "2025-09-03T06:31:27",
+      "duration": "10h51m",
+      "duration_seconds": 39089,
+      "ratio": "1:5:5",
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
+    },
+    {
+      "filename": "sourdough-starter-17.mp4",
+      "sequence": 17,
+      "start_time": "2025-09-02T19:39:58",
+      "end_time": "2025-09-03T07:39:26",
+      "duration": "11h59m",
+      "duration_seconds": 43168,
+      "ratio": "1:7:7",
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
+    },
+    {
+      "filename": "sourdough-starter-17.mp4",
+      "sequence": 17,
+      "start_time": "2025-09-02T19:39:58",
+      "end_time": "2025-09-03T08:42:52",
+      "duration": "13h2m",
+      "duration_seconds": 46974,
+      "ratio": "1:10:10",
+      "type": "time-lapse",
+      "subject": "sourdough starter fermentation",
+      "temperature": "variable",
+      "equipment": "ThermoPro digital thermometer",
+      "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     }
   ]
 }
