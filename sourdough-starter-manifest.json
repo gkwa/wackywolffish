@@ -17,7 +17,6 @@
       "sequence": 11,
       "start_time": "2025-08-21T16:27:53",
       "end_time": "2025-08-22T03:50:00",
-      "temperature": "variable",
       "notes": "Extended fermentation documentation with temperature monitoring",
       "duration_seconds": 40927,
       "duration": "11h22m"
@@ -29,7 +28,6 @@
       "end_time": "2025-08-22T21:28:01",
       "duration": "6h56m",
       "duration_seconds": 24993,
-      "temperature": "variable",
       "notes": "ThermoPro was not measuring this starter during this run, it was measuring ovent temp while learning about the heatpad"
     },
     {
@@ -38,8 +36,7 @@
       "start_time": "2025-08-24T13:37:48",
       "end_time": "2025-08-25T07:15:41",
       "duration": "17h37m",
-      "duration_seconds": 63473,
-      "temperature": null
+      "duration_seconds": 63473
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -49,8 +46,7 @@
       "duration": "7h34m",
       "duration_seconds": 27276,
       "ratio": "1:1:1",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -60,8 +56,7 @@
       "duration": "7h39m",
       "duration_seconds": 27581,
       "ratio": "1:2:2",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -71,8 +66,7 @@
       "duration": "7h51m",
       "duration_seconds": 28260,
       "ratio": "1:3:3",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -82,8 +76,7 @@
       "duration": "8h27m",
       "duration_seconds": 30473,
       "ratio": "1:5:5",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -93,8 +86,7 @@
       "duration": "8h26m",
       "duration_seconds": 30412,
       "ratio": "1:7:7",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -104,8 +96,7 @@
       "duration": "8h34m",
       "duration_seconds": 30869,
       "ratio": "1:10:10",
-      "starter_grams": "8",
-      "temperature": "variable"
+      "starter_grams": "8"
     },
     {
       "filename": "sourdough-starter-17.mp4",
@@ -116,7 +107,6 @@
       "duration_seconds": 27216,
       "ratio": "1:1:1",
       "starter_grams": "8",
-      "temperature": "variable",
       "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     },
     {
@@ -128,7 +118,6 @@
       "duration_seconds": 35223,
       "ratio": "1:3:3",
       "starter_grams": "8",
-      "temperature": "variable",
       "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     },
     {
@@ -140,7 +129,6 @@
       "duration_seconds": 39089,
       "ratio": "1:5:5",
       "starter_grams": "8",
-      "temperature": "variable",
       "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     },
     {
@@ -152,7 +140,6 @@
       "duration_seconds": 39059,
       "ratio": "1:7:7",
       "starter_grams": "8",
-      "temperature": "variable",
       "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     },
     {
@@ -164,7 +151,6 @@
       "duration_seconds": 46974,
       "ratio": "1:10:10",
       "starter_grams": "8",
-      "temperature": "variable",
       "notes": "Multiple starter ratios tested simultaneously with temperature monitoring"
     }
   ]
