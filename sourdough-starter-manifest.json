@@ -39,8 +39,7 @@
       "end_time": "2025-08-25T07:15:41",
       "duration": "17h37m",
       "duration_seconds": 63473,
-      "temperature": null,
-      "notes": null
+      "temperature": null
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -51,8 +50,7 @@
       "duration_seconds": 27276,
       "ratio": "1:1:1",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -63,8 +61,7 @@
       "duration_seconds": 27581,
       "ratio": "1:2:2",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -75,8 +72,7 @@
       "duration_seconds": 28260,
       "ratio": "1:3:3",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -87,8 +83,7 @@
       "duration_seconds": 30473,
       "ratio": "1:5:5",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -99,8 +94,7 @@
       "duration_seconds": 30412,
       "ratio": "1:7:7",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-15.mp4",
@@ -111,8 +105,7 @@
       "duration_seconds": 30869,
       "ratio": "1:10:10",
       "starter_grams": "8",
-      "temperature": "variable",
-      "notes": ""
+      "temperature": "variable"
     },
     {
       "filename": "sourdough-starter-17.mp4",
