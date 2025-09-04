@@ -9,15 +9,13 @@
       "end_time": "2025-08-21T04:53:01",
       "duration": "6h32m",
       "duration_seconds": 23562,
-      "temperature": "75°F",
-      "notes": "Overnight fermentation documentation showing starter activity and temperature monitoring"
+      "temperature": "75°F"
     },
     {
       "filename": "sourdough-starter-11.mp4",
       "sequence": 11,
       "start_time": "2025-08-21T16:27:53",
       "end_time": "2025-08-22T03:50:00",
-      "notes": "Extended fermentation documentation with temperature monitoring",
       "duration_seconds": 40927,
       "duration": "11h22m"
     },
