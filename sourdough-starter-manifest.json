@@ -434,6 +434,35 @@
           "mode": 56
         }
       }
+    },
+    {
+      "filename": "sourdough-starter-18.mp4",
+      "sequence": 18,
+      "start_time": "2025-09-06T18:31:42",
+      "end_time": "2025-09-07T13:03:22",
+      "duration": "18h31m",
+      "duration_seconds": 66700,
+      "ratio": "1:5:5",
+      "starter_grams": "10",
+      "environmental_data": {
+        "records_found": 1112,
+        "temperature_f": {
+          "min": 70.7,
+          "max": 77.2,
+          "mean": 73.8,
+          "median": 73.4,
+          "std": 2.05,
+          "mode": 72.5
+        },
+        "humidity_pct": {
+          "min": 52,
+          "max": 71,
+          "mean": 60.5,
+          "median": 61.0,
+          "std": 5.01,
+          "mode": 61
+        }
+      }
     }
   ]
 }
