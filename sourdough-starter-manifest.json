@@ -1,10 +1,32 @@
 {
   "project": "Sourdough Starter Time-lapse",
   "description": "Time-lapse documentation of sourdough starter fermentation process",
+  "recipes": {
+    "arachnophobia": {
+      "name": "Standard Mix",
+      "description": "Standard flour mixture used for most experiments",
+      "flours": {
+        "all_purpose": {
+          "grams": 9,
+          "type": "all purpose"
+        },
+        "whole_wheat": {
+          "grams": 9,
+          "type": "whole wheat"
+        },
+        "rye": {
+          "grams": 12,
+          "type": "rye"
+        }
+      },
+      "total_flour_grams": 30
+    }
+  },
   "videos": [
     {
       "filename": "sourdough-starter-10.mp4",
       "sequence": 10,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-20T22:20:19",
       "end_time": "2025-08-21T04:53:01",
       "duration": "6h32m",
@@ -32,6 +54,7 @@
     {
       "filename": "sourdough-starter-11.mp4",
       "sequence": 11,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-21T16:27:53",
       "end_time": "2025-08-22T03:50:00",
       "duration_seconds": 40927,
@@ -59,6 +82,7 @@
     {
       "filename": "sourdough-starter-12.mp4",
       "sequence": 12,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-22T14:31:28",
       "end_time": "2025-08-22T21:28:01",
       "duration": "6h56m",
@@ -87,6 +111,7 @@
     {
       "filename": "sourdough-starter-14.mp4",
       "sequence": 14,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-24T13:37:48",
       "end_time": "2025-08-25T07:15:41",
       "duration": "17h37m",
@@ -114,6 +139,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T21:14:12",
       "duration": "7h34m",
@@ -143,6 +169,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T21:19:17",
       "duration": "7h39m",
@@ -172,6 +199,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T21:30:36",
       "duration": "7h51m",
@@ -201,6 +229,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T22:07:29",
       "duration": "8h27m",
@@ -230,6 +259,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T22:06:28",
       "duration": "8h26m",
@@ -259,6 +289,7 @@
     {
       "filename": "sourdough-starter-15.mp4",
       "sequence": 15,
+      "recipe": "arachnophobia",
       "start_time": "2025-08-28T13:39:36",
       "end_time": "2025-08-28T22:14:05",
       "duration": "8h34m",
@@ -288,6 +319,7 @@
     {
       "filename": "sourdough-starter-17.mp4",
       "sequence": 17,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-02T19:39:58",
       "end_time": "2025-09-03T03:13:34",
       "duration": "7h33m",
@@ -318,6 +350,7 @@
     {
       "filename": "sourdough-starter-17.mp4",
       "sequence": 17,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-02T19:53:09",
       "end_time": "2025-09-03T05:40:12",
       "duration": "9h47m",
@@ -348,6 +381,7 @@
     {
       "filename": "sourdough-starter-17.mp4",
       "sequence": 17,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-02T19:39:58",
       "end_time": "2025-09-03T06:31:27",
       "duration": "10h51m",
@@ -378,6 +412,7 @@
     {
       "filename": "sourdough-starter-17.mp4",
       "sequence": 17,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-02T20:00:46",
       "end_time": "2025-09-03T06:51:45",
       "duration": "10h50m",
@@ -408,6 +443,7 @@
     {
       "filename": "sourdough-starter-17.mp4",
       "sequence": 17,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-02T20:11:56",
       "end_time": "2025-09-03T08:14:57",
       "duration": "12h3m",
@@ -438,6 +474,7 @@
     {
       "filename": "sourdough-starter-18.mp4",
       "sequence": 18,
+      "recipe": "arachnophobia",
       "start_time": "2025-09-06T18:31:42",
       "end_time": "2025-09-07T13:03:22",
       "duration": "18h31m",
