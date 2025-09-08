@@ -7,19 +7,18 @@
       "description": "Standard flour mixture used for most experiments",
       "flours": {
         "all_purpose": {
-          "grams": 9,
-          "type": "all purpose"
+          "type": "all purpose",
+          "percentage": 30
         },
         "whole_wheat": {
-          "grams": 9,
-          "type": "whole wheat"
+          "type": "whole wheat",
+          "percentage": 30
         },
         "rye": {
-          "grams": 12,
-          "type": "rye"
+          "type": "rye",
+          "percentage": 40
         }
-      },
-      "total_flour_grams": 30
+      }
     }
   },
   "videos": [
