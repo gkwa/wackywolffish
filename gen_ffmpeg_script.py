@@ -342,7 +342,9 @@ def load_media_files(
         )
 
 
-def handle_error(e: Exception, args: argparse.Namespace) -> int:
+def handle_error(
+    e: typing.Union[KeyboardInterrupt, IOError], args: argparse.Namespace
+) -> int:
     """Handle different types of errors and return appropriate exit code"""
     if isinstance(e, KeyboardInterrupt):
         return EXIT_INTERRUPTED
