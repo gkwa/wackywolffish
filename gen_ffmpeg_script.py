@@ -5,6 +5,7 @@ import re
 import pathlib
 import contextlib
 import select
+import typing
 
 # Constants
 SCRIPT_EXECUTABLE_MODE = 0o755
@@ -15,8 +16,13 @@ EXIT_SUCCESS = 0
 EXIT_NO_FILES = 1
 EXIT_INTERRUPTED = 2
 
+# Type aliases
+ParsedFile = typing.Dict[str, typing.Union[str, int, typing.Tuple[str, str, str]]]
+MediaFile = typing.Tuple[typing.Union[int, typing.Tuple[str, str, str]], str, str, str]
+ParserFunction = typing.Callable[[str], typing.Optional[ParsedFile]]
 
-def parse_filename_aatp(filepath):
+
+def parse_filename_aatp(filepath: str) -> typing.Optional[ParsedFile]:
     """
     Parse filename like IMG_20250728_115906_AATP1401.jpg
     Returns dict with date, time, and sequence number (AATP prefix removed)
@@ -37,7 +43,7 @@ def parse_filename_aatp(filepath):
     return None
 
 
-def parse_filename_simple(filepath):
+def parse_filename_simple(filepath: str) -> typing.Optional[ParsedFile]:
     """
     Parse filename like IMG_20250908_150139.jpg
     Returns dict with date, time, and synthetic sequence number based on time
@@ -60,7 +66,9 @@ def parse_filename_simple(filepath):
     return None
 
 
-def get_parser_functions(pattern_types=None):
+def get_parser_functions(
+    pattern_types: typing.Optional[typing.List[str]] = None,
+) -> typing.List[ParserFunction]:
     """Return list of parser functions based on pattern types"""
     all_parsers = {
         "aatp": parse_filename_aatp,
@@ -73,7 +81,7 @@ def get_parser_functions(pattern_types=None):
     return [all_parsers[ptype] for ptype in pattern_types if ptype in all_parsers]
 
 
-def needs_quotes(path):
+def needs_quotes(path: str) -> bool:
     """Check if path needs quotes (has spaces or special characters)"""
     # Don't quote command substitutions
     if path.startswith("$(") and path.endswith(")"):
@@ -83,21 +91,23 @@ def needs_quotes(path):
     return bool(re.search(special_chars, path))
 
 
-def format_path(path):
+def format_path(path: typing.Union[str, pathlib.Path]) -> str:
     """Format path with quotes only if needed"""
     if needs_quotes(str(path)):
         return f"'{path}'"
     return str(path)
 
 
-def get_sort_key(parsed, sort_by):
+def get_sort_key(
+    parsed: ParsedFile, sort_by: str
+) -> typing.Union[int, typing.Tuple[str, str, str]]:
     """Get the appropriate sort key based on sort method"""
     if sort_by == "sequence":
         return parsed["sequence"]
     return parsed["timestamp"]
 
 
-def parse_arguments():
+def parse_arguments() -> argparse.Namespace:
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
         description="Generate ffmpeg bash script from sorted image files"
@@ -126,10 +136,18 @@ def parse_arguments():
         choices=["aatp", "simple"],
         help="Filename patterns to try: 'aatp' for IMG_DATE_TIME_AATPNNNN.jpg, 'simple' for IMG_DATE_TIME.jpg (default: all patterns)",
     )
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="Don't print summary information",
+    )
     return parser.parse_args()
 
 
-def try_parse_with_functions(filepath, parser_functions):
+def try_parse_with_functions(
+    filepath: str, parser_functions: typing.List[ParserFunction]
+) -> typing.Optional[ParsedFile]:
     """Try parsing filepath with multiple parser functions, return first successful match"""
     for parser_func in parser_functions:
         result = parser_func(filepath)
@@ -138,7 +156,7 @@ def try_parse_with_functions(filepath, parser_functions):
     return None
 
 
-def check_stdin_available():
+def check_stdin_available() -> bool:
     """Check if stdin has data available without blocking"""
     if sys.stdin.isatty():
         return False
@@ -152,13 +170,19 @@ def check_stdin_available():
         return True  # Assume data is available
 
 
-def read_and_parse_files(input_source, sort_by, parser_functions, is_stdin=False):
+def read_and_parse_files(
+    input_source: typing.TextIO,
+    sort_by: str,
+    parser_functions: typing.List[ParserFunction],
+    is_stdin: bool = False,
+    quiet: bool = False,
+) -> typing.Tuple[typing.List[MediaFile], typing.Set[str]]:
     """Read files from input source and parse them into sorted list using provided parser functions"""
-    media_files = []
-    mount_paths = set()
+    media_files: typing.List[MediaFile] = []
+    mount_paths: typing.Set[str] = set()
 
     # Show helpful message if waiting for stdin
-    if is_stdin and not check_stdin_available():
+    if is_stdin and not check_stdin_available() and not quiet:
         print("Waiting for input on stdin (Ctrl+C to cancel)...", file=sys.stderr)
 
     try:
@@ -176,26 +200,29 @@ def read_and_parse_files(input_source, sort_by, parser_functions, is_stdin=False
                 )
                 mount_paths.add(str(path.parent))
     except KeyboardInterrupt:
-        if is_stdin:
-            print("\nInterrupted while reading from stdin", file=sys.stderr)
-        else:
-            print("\nOperation interrupted", file=sys.stderr)
+        if not quiet:
+            if is_stdin:
+                print("\nInterrupted while reading from stdin", file=sys.stderr)
+            else:
+                print("\nOperation interrupted", file=sys.stderr)
         raise
 
     media_files.sort(key=lambda x: x[0])
     return media_files, mount_paths
 
 
-def create_manifest_content(media_files):
+def create_manifest_content(media_files: typing.List[MediaFile]) -> typing.List[str]:
     """Create the manifest file content"""
-    manifest_content = []
+    manifest_content: typing.List[str] = []
     for sort_key, full_path, filename, parser_type in media_files:
         docker_path = f"/input/{filename}"
         manifest_content.append(f"file {format_path(docker_path)}\n")
     return manifest_content
 
 
-def write_manifest_section(f, manifest_content):
+def write_manifest_section(
+    f: typing.TextIO, manifest_content: typing.List[str]
+) -> None:
     """Write the manifest file creation section"""
     f.write("# Create manifest file\n")
     f.write("cat > ffmpeg_list.txt << 'EOF'\n")
@@ -204,7 +231,7 @@ def write_manifest_section(f, manifest_content):
     f.write("EOF\n\n")
 
 
-def write_docker_command(f, mount_paths):
+def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None:
     """Write the docker command section"""
     # Build mount volume arguments
     mount_args = []
@@ -234,14 +261,18 @@ jrottenberg/ffmpeg:latest \\
     f.write(docker_command)
 
 
-def get_output_context(output_file):
+def get_output_context(
+    output_file: str,
+) -> typing.Union[contextlib.nullcontext, contextlib._GeneratorContextManager]:
     """Get output context manager for file or stdout"""
     if output_file == "-":
         return contextlib.nullcontext(sys.stdout)
     return open(output_file, "w")
 
 
-def generate_script(output_file, media_files, mount_paths):
+def generate_script(
+    output_file: str, media_files: typing.List[MediaFile], mount_paths: typing.Set[str]
+) -> None:
     """Generate the complete bash script"""
     manifest_content = create_manifest_content(media_files)
 
@@ -257,7 +288,12 @@ def generate_script(output_file, media_files, mount_paths):
         pathlib.Path(output_file).chmod(SCRIPT_EXECUTABLE_MODE)
 
 
-def print_summary(output_file, media_files, sort_by, used_patterns):
+def print_summary(
+    output_file: str,
+    media_files: typing.List[MediaFile],
+    sort_by: str,
+    used_patterns: typing.List[str],
+) -> None:
     """Print summary information to stderr"""
     sort_method = "sequence number" if sort_by == "sequence" else "timestamp"
     pattern_summary = ", ".join(used_patterns) if used_patterns else "all"
@@ -275,19 +311,21 @@ def print_summary(output_file, media_files, sort_by, used_patterns):
         )
 
 
-def get_used_patterns(media_files):
+def get_used_patterns(media_files: typing.List[MediaFile]) -> typing.List[str]:
     """Extract unique parser types used from media files"""
     return list(set(item[3] for item in media_files))
 
 
-def get_input_source(input_file):
+def get_input_source(
+    input_file: typing.Optional[str],
+) -> typing.Union[contextlib.nullcontext, contextlib._GeneratorContextManager]:
     """Get input source context manager for file or stdin"""
     if input_file:
         return open(input_file, "r")
     return contextlib.nullcontext(sys.stdin)
 
 
-def main():
+def main() -> int:
     args = parse_arguments()
 
     parser_functions = get_parser_functions(args.patterns)
@@ -296,26 +334,30 @@ def main():
         with get_input_source(args.input_file) as input_source:
             is_stdin = args.input_file is None
             media_files, mount_paths = read_and_parse_files(
-                input_source, args.sort_by, parser_functions, is_stdin
+                input_source, args.sort_by, parser_functions, is_stdin, args.quiet
             )
     except KeyboardInterrupt:
         return EXIT_INTERRUPTED
     except IOError as e:
-        print(f"Error opening input file '{args.input_file}': {e}", file=sys.stderr)
+        if not args.quiet:
+            print(f"Error opening input file '{args.input_file}': {e}", file=sys.stderr)
         return EXIT_NO_FILES
 
     if not media_files:
-        print("No matching image files found in input", file=sys.stderr)
+        if not args.quiet:
+            print("No matching image files found in input", file=sys.stderr)
         return EXIT_NO_FILES
 
     try:
         generate_script(args.script_output, media_files, mount_paths)
 
-        used_patterns = get_used_patterns(media_files)
-        print_summary(args.script_output, media_files, args.sort_by, used_patterns)
+        if not args.quiet:
+            used_patterns = get_used_patterns(media_files)
+            print_summary(args.script_output, media_files, args.sort_by, used_patterns)
 
     except KeyboardInterrupt:
-        print("\nOperation interrupted during script generation", file=sys.stderr)
+        if not args.quiet:
+            print("\nOperation interrupted during script generation", file=sys.stderr)
         return EXIT_INTERRUPTED
 
     return EXIT_SUCCESS
