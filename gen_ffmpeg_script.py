@@ -110,7 +110,7 @@ def parse_arguments():
     parser.add_argument(
         "--script-output",
         default=DEFAULT_SCRIPT_NAME,
-        help=f"Output bash script filename (default: {DEFAULT_SCRIPT_NAME})",
+        help=f"Output bash script filename, use '-' for stdout (default: {DEFAULT_SCRIPT_NAME})",
     )
     parser.add_argument(
         "-s",
@@ -234,20 +234,27 @@ jrottenberg/ffmpeg:latest \\
     f.write(docker_command)
 
 
+def get_output_context(output_file):
+    """Get output context manager for file or stdout"""
+    if output_file == "-":
+        return contextlib.nullcontext(sys.stdout)
+    return open(output_file, "w")
+
+
 def generate_script(output_file, media_files, mount_paths):
     """Generate the complete bash script"""
     manifest_content = create_manifest_content(media_files)
-    output_path = pathlib.Path(output_file)
 
-    with output_path.open("w") as f:
+    with get_output_context(output_file) as f:
         f.write("#!/bin/bash\n")
         f.write("# Generated ffmpeg script\n\n")
 
         write_manifest_section(f, manifest_content)
         write_docker_command(f, mount_paths)
 
-    # Make the script executable
-    output_path.chmod(SCRIPT_EXECUTABLE_MODE)
+    # Make the script executable only if it's a file (not stdout)
+    if output_file != "-":
+        pathlib.Path(output_file).chmod(SCRIPT_EXECUTABLE_MODE)
 
 
 def print_summary(output_file, media_files, sort_by, used_patterns):
@@ -255,8 +262,9 @@ def print_summary(output_file, media_files, sort_by, used_patterns):
     sort_method = "sequence number" if sort_by == "sequence" else "timestamp"
     pattern_summary = ", ".join(used_patterns) if used_patterns else "all"
 
+    output_desc = "stdout" if output_file == "-" else output_file
     print(
-        f"Generated {output_file} with {len(media_files)} files sorted by {sort_method}",
+        f"Generated script to {output_desc} with {len(media_files)} files sorted by {sort_method}",
         file=sys.stderr,
     )
     print(f"Used patterns: {pattern_summary}", file=sys.stderr)
