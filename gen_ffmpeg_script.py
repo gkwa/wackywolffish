@@ -103,8 +103,12 @@ def get_sort_key(
 ) -> typing.Union[int, typing.Tuple[str, str, str]]:
     """Get the appropriate sort key based on sort method"""
     if sort_by == "sequence":
-        return parsed["sequence"]
-    return parsed["timestamp"]
+        sequence = parsed["sequence"]
+        assert isinstance(sequence, int)
+        return sequence
+    timestamp = parsed["timestamp"]
+    assert isinstance(timestamp, tuple)
+    return timestamp
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -194,9 +198,11 @@ def read_and_parse_files(
             parsed = try_parse_with_functions(filepath, parser_functions)
             if parsed:
                 sort_key = get_sort_key(parsed, sort_by)
-                path = pathlib.Path(parsed["filepath"])
+                path = pathlib.Path(str(parsed["filepath"]))
+                parser_type = parsed["parser_type"]
+                assert isinstance(parser_type, str)
                 media_files.append(
-                    (sort_key, parsed["filepath"], path.name, parsed["parser_type"])
+                    (sort_key, str(parsed["filepath"]), path.name, parser_type)
                 )
                 mount_paths.add(str(path.parent))
     except KeyboardInterrupt:
@@ -261,9 +267,7 @@ jrottenberg/ffmpeg:latest \\
     f.write(docker_command)
 
 
-def get_output_context(
-    output_file: str,
-) -> typing.Union[contextlib.nullcontext, contextlib._GeneratorContextManager]:
+def get_output_context(output_file: str) -> typing.ContextManager[typing.TextIO]:
     """Get output context manager for file or stdout"""
     if output_file == "-":
         return contextlib.nullcontext(sys.stdout)
@@ -318,30 +322,44 @@ def get_used_patterns(media_files: typing.List[MediaFile]) -> typing.List[str]:
 
 def get_input_source(
     input_file: typing.Optional[str],
-) -> typing.Union[contextlib.nullcontext, contextlib._GeneratorContextManager]:
+) -> typing.ContextManager[typing.TextIO]:
     """Get input source context manager for file or stdin"""
     if input_file:
         return open(input_file, "r")
     return contextlib.nullcontext(sys.stdin)
 
 
-def main() -> int:
-    args = parse_arguments()
-
+def load_media_files(
+    args: argparse.Namespace,
+) -> typing.Tuple[typing.List[MediaFile], typing.Set[str]]:
+    """Load and parse media files from input source"""
     parser_functions = get_parser_functions(args.patterns)
 
-    try:
-        with get_input_source(args.input_file) as input_source:
-            is_stdin = args.input_file is None
-            media_files, mount_paths = read_and_parse_files(
-                input_source, args.sort_by, parser_functions, is_stdin, args.quiet
-            )
-    except KeyboardInterrupt:
+    with get_input_source(args.input_file) as input_source:
+        is_stdin = args.input_file is None
+        return read_and_parse_files(
+            input_source, args.sort_by, parser_functions, is_stdin, args.quiet
+        )
+
+
+def handle_error(e: Exception, args: argparse.Namespace) -> int:
+    """Handle different types of errors and return appropriate exit code"""
+    if isinstance(e, KeyboardInterrupt):
         return EXIT_INTERRUPTED
-    except IOError as e:
+    elif isinstance(e, IOError):
         if not args.quiet:
             print(f"Error opening input file '{args.input_file}': {e}", file=sys.stderr)
         return EXIT_NO_FILES
+    else:
+        raise e
+
+
+def process_files(args: argparse.Namespace) -> int:
+    """Process files and generate script, handling all errors"""
+    try:
+        media_files, mount_paths = load_media_files(args)
+    except (KeyboardInterrupt, IOError) as e:
+        return handle_error(e, args)
 
     if not media_files:
         if not args.quiet:
@@ -361,6 +379,12 @@ def main() -> int:
         return EXIT_INTERRUPTED
 
     return EXIT_SUCCESS
+
+
+def main() -> int:
+    """Main entry point"""
+    args = parse_arguments()
+    return process_files(args)
 
 
 if __name__ == "__main__":
