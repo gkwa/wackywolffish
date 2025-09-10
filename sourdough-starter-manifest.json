@@ -649,6 +649,28 @@
           "mode": 61
         }
       }
+    },
+    {
+      "filename": "sourdough-starter-20.mp4",
+      "sequence": 20,
+      "recipe": "arachnophobia",
+      "start_time": "2025-09-09T08:56:20",
+      "end_time": "2025-09-10T01:35:33",
+      "duration": "",
+      "duration_seconds": 66700,
+      "ratio": "1:10:10",
+      "starter_grams": "5"
+    },
+    {
+      "filename": "sourdough-starter-21.mp4",
+      "sequence": 21,
+      "recipe": "arachnophobia",
+      "start_time": "2025-09-10T13:17:22",
+      "end_time": "2025-09-10T13:17:22",
+      "duration": "",
+      "duration_seconds": 66700,
+      "ratio": "1:10:10",
+      "starter_grams": "5"
     }
   ]
 }
