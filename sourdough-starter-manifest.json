@@ -711,7 +711,7 @@
       }
     },
     {
-      "ignore_record": true,
+      "incomplete": true,
       "filename": "sourdough-starter-22.mp4",
       "sequence": 22,
       "recipe": "arachnophobia",
