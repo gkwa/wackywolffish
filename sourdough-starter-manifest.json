@@ -716,12 +716,31 @@
       "sequence": 22,
       "recipe": "arachnophobia",
       "start_time": "2025-09-11T20:42:37",
-      "end_time": "2025-09-12T07:39:01",
+      "end_time": "2025-09-12T16:43:56",
       "first_active_time": "2025-09-12T05:40:26",
-      "duration": "10h56m",
-      "duration_seconds": 39384,
+      "duration": "20h1m",
+      "duration_seconds": 72079,
       "ratio": "1:5.1:5.1",
-      "starter_grams": "10"
-    } 
+      "starter_grams": "10",
+      "environmental_data": {
+        "records_found": 1201,
+        "temperature_f": {
+          "min": 70.9,
+          "max": 73.8,
+          "mean": 72.4,
+          "median": 72.5,
+          "std": 1.01,
+          "mode": 71.2
+        },
+        "humidity_pct": {
+          "min": 59,
+          "max": 66,
+          "mean": 62.1,
+          "median": 62.0,
+          "std": 1.41,
+          "mode": 62
+        }
+      }
+    }
   ]
 }
