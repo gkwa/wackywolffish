@@ -740,6 +740,18 @@
           "mode": 62
         }
       }
+    },
+    {
+      "filename": "sourdough-starter-23.mp4",
+      "sequence": 23,
+      "recipe": "arachnophobia",
+      "start_time": "2025-09-11T",
+      "end_time": "2025-09-12T",
+      "first_active_time": "",
+      "duration": "20h1m",
+      "duration_seconds": 72079,
+      "ratio": "1:5:5",
+      "starter_grams": "10"
     }
   ]
 }
