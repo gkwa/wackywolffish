@@ -221,7 +221,7 @@ def create_manifest_content(media_files: typing.List[MediaFile]) -> typing.List[
     """Create the manifest file content"""
     manifest_content: typing.List[str] = []
     for sort_key, full_path, filename, parser_type in media_files:
-        docker_path = f"/input/{filename}"
+        docker_path = f"/config/{filename}"
         manifest_content.append(f"file {format_path(docker_path)}\n")
     return manifest_content
 
@@ -242,7 +242,7 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
     # Build mount volume arguments
     mount_args = []
     for mount_path in sorted(mount_paths):
-        mount_args.append(f"-v {format_path(mount_path)}:/input")
+        mount_args.append(f"-v {format_path(mount_path)}:/config")
 
     mount_volumes = " \\\n".join(mount_args)
 
@@ -250,7 +250,7 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
 docker run --rm --name wackywolffish \\
 -v {format_path("$(pwd)")}:/workspace \\
 {mount_volumes} \\
-jrottenberg/ffmpeg:latest \\
+lscr.io/linuxserver/ffmpeg:latest \\
 -y \\
 -f concat \\
 -safe 0 \\
