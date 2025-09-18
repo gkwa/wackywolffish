@@ -793,6 +793,20 @@
       "duration_seconds": 72079,
       "ratio": "1:5:5",
       "starter_grams": "10"
+    },
+    {
+      "incomplete_record": true,
+      "filename": "sourdough-starter-27.mp4",
+      "sequence": 27,
+      "recipe": "arachnophobia",
+      "feeding_start_time": "2025-09-17T17:49:11",
+      "active_start_time": "",
+      "peak_time": "",
+      "active_end_time": "",
+      "duration": "",
+      "duration_seconds": 72079,
+      "ratio": "1:10:10",
+      "starter_grams": "5"
     }
   ]
 }
