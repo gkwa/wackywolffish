@@ -319,7 +319,6 @@
       "active_end_time": "2025-09-17T17:40:13",
       "active_start_time": "2025-09-17T03:30:18",
       "feeding_start_time": "2025-09-16T17:39:54",
-      "filename": "sourdough-starter-26.mp4",
       "peak_time": "2025-09-17T15:13:55",
       "ratio": "1:5:5",
       "recipe": "arachnophobia",
@@ -329,8 +328,7 @@
     {
       "active_end_time": "",
       "active_start_time": "",
-      "feeding_start_time": "2025-09-17T17:49:11",
-      "filename": "sourdough-starter-27.mp4",
+      "feeding_start_time": "2025-09-17T17:51:14",
       "incomplete_record": true,
       "peak_time": "",
       "ratio": "1:10:10",
