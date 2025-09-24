@@ -375,6 +375,16 @@
       "ratio": "1:1:1",
       "recipe": "arachnophobia",
       "starter_grams": "20"
+    },
+    {
+      "incomplete_record": true,
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-09-23T21:02:43",
+      "peak_time": "",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "20"
     }
   ]
 }
