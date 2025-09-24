@@ -367,11 +367,10 @@
       "starter_grams": "20"
     },
     {
-      "incomplete_record": true,
-      "active_end_time": "",
+      "active_end_time": "2025-09-23T20:37:51",
       "active_time": "2025-09-23T03:04:46",
       "feed_time": "2025-09-22T23:03:31",
-      "peak_time": "",
+      "peak_time": "2025-09-23T15:52:40",
       "ratio": "1:1:1",
       "recipe": "arachnophobia",
       "starter_grams": "20"
