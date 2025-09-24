@@ -339,9 +339,9 @@
     {
       "incomplete_record": true,
       "active_end_time": "",
-      "active_time": "2025-09-19:T07:34:37",
+      "active_time": "2025-09-19T07:34:37",
       "feed_time": "2025-09-18T20:57:30",
-      "peak_time": "2025-09-19:T19:01:24",
+      "peak_time": "2025-09-19T19:01:24",
       "ratio": "1:5.1:5.1",
       "recipe": "arachnophobia",
       "starter_grams": "10"
