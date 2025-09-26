@@ -385,6 +385,26 @@
       "recipe": "arachnophobia",
       "starter_grams": "20",
       "note": "I discarded this before it peaked.  There was nothing wrong with it though."
+    },
+    {
+      "incomplete_record": true,
+      "active_end_time": "",
+      "active_time": "2025-09-24T16:10:32",
+      "feed_time": "2025-09-24T14:25:30",
+      "peak_time": "",
+      "ratio": "1:3.07:3.07",
+      "recipe": "arachnophobia",
+      "starter_grams": "42"
+    },
+    {
+      "incomplete_record": true,
+      "active_end_time": "2025-09-26T04:54:14",
+      "active_time": "2025-09-25T17:53:40",
+      "feed_time": "2025-09-25T16:33:58",
+      "peak_time": "2025-09-26T00:48:43",
+      "ratio": "1:3:3",
+      "recipe": "arachnophobia",
+      "starter_grams": "13"
     }
   ]
 }
