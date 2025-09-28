@@ -242,7 +242,7 @@
     },
     {
       "active_end_time": "",
-      "active_time": "",
+      "active_time": "2025-09-07T02:37:15",
       "feed_time": "2025-09-06T18:31:42",
       "filename": "sourdough-starter-18.mp4",
       "peak_time": "2025-09-07T13:03:22",
@@ -263,8 +263,8 @@
       "starter_grams": "5"
     },
     {
-      "active_end_time": "",
-      "active_time": "",
+      "active_end_time": "2025-09-11T16:58:03",
+      "active_time": "2025-09-10T21:54:53",
       "feed_time": "2025-09-10T13:17:22",
       "filename": "sourdough-starter-21.mp4",
       "peak_time": "2025-09-11T11:57:57",
@@ -326,28 +326,26 @@
       "starter_grams": "10"
     },
     {
-      "active_end_time": "",
       "active_time": "2025-09-18T03:55:07",
       "feed_time": "2025-09-17T17:51:14",
-      "incomplete_record": true,
       "peak_time": "2025-09-18T19:27:22",
       "ratio": "1:10:10",
       "recipe": "arachnophobia",
       "sequence": 27,
-      "starter_grams": "5"
+      "starter_grams": "5",
+      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though."
     },
     {
-      "incomplete_record": true,
       "active_end_time": "",
       "active_time": "2025-09-19T07:34:37",
       "feed_time": "2025-09-18T20:57:30",
       "peak_time": "2025-09-19T19:01:24",
       "ratio": "1:5.1:5.1",
       "recipe": "arachnophobia",
-      "starter_grams": "10"
+      "starter_grams": "10",
+      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though."
     },
     {
-      "incomplete_record": true,
       "active_end_time": "2025-09-20T22:38:17",
       "active_time": "2025-09-20T04:42:46",
       "feed_time": "2025-09-19T21:14:10",
@@ -357,11 +355,10 @@
       "starter_grams": "10"
     },
     {
-      "incomplete_record": true,
-      "active_end_time": "",
+      "active_end_time": "2025-09-21T17:58:27",
       "active_time": "2025-09-20T20:00:40",
-      "feed_time": "2025-09-20T15:02:53",
-      "peak_time": "",
+      "feed_time": "2025-09-20T15:03:31",
+      "peak_time": "2025-09-21T10:18:40",
       "ratio": "1:1.05:1.05",
       "recipe": "arachnophobia",
       "starter_grams": "20"
