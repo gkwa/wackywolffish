@@ -242,13 +242,13 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
     # Build mount volume arguments
     mount_args = []
     for mount_path in sorted(mount_paths):
-        mount_args.append(f"-v {format_path(mount_path)}:/config")
+        mount_args.append(f"--volume {format_path(mount_path)}:/config")
 
     mount_volumes = " \\\n".join(mount_args)
 
     docker_command = f"""# Run ffmpeg in docker
 docker run --pull always --rm --name wackywolffish \\
--v {format_path("$(pwd)")}:/workspace \\
+--volume {format_path("$(pwd)")}:/workspace \\
 {mount_volumes} \\
 lscr.io/linuxserver/ffmpeg:latest \\
 -y \\
