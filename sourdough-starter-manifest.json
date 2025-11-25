@@ -561,10 +561,127 @@
       "active_end_time": "",
       "active_time": "2025-11-01T23:15:00",
       "feed_time": "2025-11-01T21:39:40",
-      "peak_time": "",
+      "peak_time": "2025-11-02T11:31:08",
       "ratio": "1:1:1",
       "recipe": "arachnophobia",
       "starter_grams": "34"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-03T22:05:47",
+      "feed_time": "2025-11-03T20:33:45",
+      "peak_time": "2025-11-04T12:03:47",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "47"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-07T20:15:47",
+      "feed_time": "2025-11-07T18:03:47",
+      "peak_time": "2025-11-08T10:05:12",
+      "ratio": "1:1.6:1.6",
+      "recipe": "arachnophobia",
+      "starter_grams": "35"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-08T20:13:42",
+      "feed_time": "2025-11-08T17:56:14",
+      "peak_time": "2025-11-09T04:57:39",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "91"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-15T01:00:00",
+      "feed_time": "2025-11-14T23:04:44",
+      "peak_time": "2025-11-15T12:50:18",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "26"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-15T20:14:33",
+      "peak_time": "2025-11-16T06:48:51",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "58"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-17T19:32:07",
+      "feed_time": "2025-11-17T18:20:24",
+      "peak_time": "2025-11-18T07:14:07",
+      "ratio": "1:1.18:1.18",
+      "recipe": "arachnophobia",
+      "starter_grams": "45"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-18T18:55:20",
+      "peak_time": "2025-11-19T09:36:21",
+      "ratio": "1:1.15:1.15",
+      "recipe": "arachnophobia",
+      "starter_grams": "45"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "2025-11-19T21:26:37",
+      "feed_time": "2025-11-19T20:24:37",
+      "peak_time": "2025-11-20T07:16:37",
+      "ratio": "1:1:1",
+      "recipe": "arachnophobia",
+      "starter_grams": "50"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-20T18:51:10",
+      "peak_time": "2025-11-21T06:23:01",
+      "ratio": "1:1.15:1.15",
+      "recipe": "arachnophobia",
+      "starter_grams": "47"
+    },
+    {
+      "active_end_time": "2025-11-22T10:50:39",
+      "active_time": "2025-11-21T21:58:40",
+      "feed_time": "2025-11-21T20:22:40",
+      "peak_time": "2025-11-22T07:06:40",
+      "ratio": "1:1.36:1.36",
+      "recipe": "arachnophobia",
+      "starter_grams": "22"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-23T10:00:46",
+      "peak_time": "",
+      "ratio": "1:1.04:1.04",
+      "recipe": "arachnophobia",
+      "starter_grams": "82"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-23T22:31:19",
+      "peak_time": "",
+      "ratio": "1:1.44:1.44",
+      "recipe": "arachnophobia",
+      "starter_grams": "45"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2025-11-24T20:39:27",
+      "peak_time": "2025-11-25T07:01:27",
+      "ratio": "1:1.89:1.89",
+      "recipe": "arachnophobia",
+      "starter_grams": "53"
     }
   ]
 }
