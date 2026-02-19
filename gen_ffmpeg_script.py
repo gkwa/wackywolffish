@@ -254,7 +254,7 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
     # Build mount volume arguments
     mount_args = []
     for mount_path in sorted(mount_paths):
-        mount_args.append(f"--volume {format_path(mount_path)}:/config")
+        mount_args.append(f"--volume {format_path(mount_path)}:/config:ro")
 
     mount_volumes = " \\\n".join(mount_args)
 
