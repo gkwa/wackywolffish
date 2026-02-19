@@ -260,6 +260,7 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
 
     docker_command = f"""# Run ffmpeg in docker
 docker run --pull always --rm --name wackywolffish \\
+--entrypoint /usr/local/bin/ffmpeg \\
 --volume {format_path("$(pwd)")}:/workspace \\
 {mount_volumes} \\
 lscr.io/linuxserver/ffmpeg:latest \\
