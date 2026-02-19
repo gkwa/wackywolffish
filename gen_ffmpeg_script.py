@@ -158,6 +158,11 @@ def parse_arguments() -> argparse.Namespace:
         action="store_true",
         help="Don't print summary information",
     )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Add timestamps to the generated script to diagnose container startup delay",
+    )
     return parser.parse_args()
 
 
@@ -249,7 +254,9 @@ def write_manifest_section(
     f.write("EOF\n\n")
 
 
-def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None:
+def write_docker_command(
+    f: typing.TextIO, mount_paths: typing.Set[str], debug: bool = False
+) -> None:
     """Write the docker command section"""
     # Build mount volume arguments
     mount_args = []
@@ -258,12 +265,13 @@ def write_docker_command(f: typing.TextIO, mount_paths: typing.Set[str]) -> None
 
     mount_volumes = " \\\n".join(mount_args)
 
-    docker_command = f"""# Run ffmpeg in docker
-docker run --pull always --rm --name wackywolffish \\
+    image = "lscr.io/linuxserver/ffmpeg:latest"
+
+    run_command = f"""docker run --pull never --rm --name wackywolffish \\
 --entrypoint /usr/local/bin/ffmpeg \\
 --volume {format_path("$(pwd)")}:/workspace \\
 {mount_volumes} \\
-lscr.io/linuxserver/ffmpeg:latest \\
+{image} \\
 -y \\
 -f concat \\
 -safe 0 \\
@@ -277,7 +285,19 @@ lscr.io/linuxserver/ffmpeg:latest \\
 /workspace/timelapse.mp4
 """
 
-    f.write(docker_command)
+    if debug:
+        f.write(f'echo "[debug] docker pull start:     $(date +%T.%3N)"\n')
+        f.write(f"docker pull {image}\n")
+        f.write(f'echo "[debug] docker pull done:      $(date +%T.%3N)"\n')
+        f.write(f'echo "[debug] docker run start:      $(date +%T.%3N)"\n')
+        f.write(run_command)
+        f.write('echo "[debug] docker run done:       $(date +%T.%3N)"\n')
+        f.write('echo "[debug] timelapse.mp4 mtime:   $(stat -c %y timelapse.mp4 2>/dev/null || stat -f %Sm -t %T timelapse.mp4 2>/dev/null)"\n')
+    else:
+        f.write("# Pull latest image\n")
+        f.write(f"docker pull {image}\n\n")
+        f.write("# Run ffmpeg in docker\n")
+        f.write(run_command)
 
 
 def get_output_context(output_file: str) -> typing.ContextManager[typing.TextIO]:
@@ -288,7 +308,10 @@ def get_output_context(output_file: str) -> typing.ContextManager[typing.TextIO]
 
 
 def generate_script(
-    output_file: str, media_files: typing.List[MediaFile], mount_paths: typing.Set[str]
+    output_file: str,
+    media_files: typing.List[MediaFile],
+    mount_paths: typing.Set[str],
+    debug: bool = False,
 ) -> None:
     """Generate the complete bash script"""
     manifest_content = create_manifest_content(media_files)
@@ -298,7 +321,7 @@ def generate_script(
         f.write("# Generated ffmpeg script\n\n")
 
         write_manifest_section(f, manifest_content)
-        write_docker_command(f, mount_paths)
+        write_docker_command(f, mount_paths, debug=debug)
 
     # Make the script executable only if it's a file (not stdout)
     if output_file != "-":
@@ -387,7 +410,7 @@ def process_files(args: argparse.Namespace) -> int:
         media_files = media_files[: args.max_frames]
 
     try:
-        generate_script(args.script_output, media_files, mount_paths)
+        generate_script(args.script_output, media_files, mount_paths, debug=args.debug)
 
         if not args.quiet:
             used_patterns = get_used_patterns(media_files)
