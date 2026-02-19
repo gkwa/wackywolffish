@@ -147,6 +147,12 @@ def parse_arguments() -> argparse.Namespace:
         help="Reverse sort order (most recent files first)",
     )
     parser.add_argument(
+        "--max-frames",
+        type=int,
+        metavar="N",
+        help="Limit output to N frames",
+    )
+    parser.add_argument(
         "-q",
         "--quiet",
         action="store_true",
@@ -376,6 +382,8 @@ def process_files(args: argparse.Namespace) -> int:
 
     if args.reverse:
         media_files = list(reversed(media_files))
+    if args.max_frames:
+        media_files = media_files[: args.max_frames]
 
     try:
         generate_script(args.script_output, media_files, mount_paths)
