@@ -141,6 +141,12 @@ def parse_arguments() -> argparse.Namespace:
         help="Filename patterns to try: 'aatp' for IMG_DATE_TIME_AATPNNNN.jpg, 'simple' for IMG_DATE_TIME.jpg (default: all patterns)",
     )
     parser.add_argument(
+        "-r",
+        "--reverse",
+        action="store_true",
+        help="Reverse sort order (most recent files first)",
+    )
+    parser.add_argument(
         "-q",
         "--quiet",
         action="store_true",
@@ -367,6 +373,9 @@ def process_files(args: argparse.Namespace) -> int:
         if not args.quiet:
             print("No matching image files found in input", file=sys.stderr)
         return EXIT_NO_FILES
+
+    if args.reverse:
+        media_files = list(reversed(media_files))
 
     try:
         generate_script(args.script_output, media_files, mount_paths)
