@@ -34,20 +34,18 @@ def parse_date(value: str) -> datetime.date:
 
 def build_entry(args: argparse.Namespace) -> dict:
     feed_dt = datetime.datetime.combine(args.date, args.time)
-    entry: dict = {
+    return {
         "active_end_time": args.active_end_time,
         "active_time": args.active_time,
         "feed_time": feed_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+        "incomplete_record": args.incomplete_record,
+        "note": args.note,
+        "notes": args.notes,
         "peak_time": args.peak_time,
+        "ratio": args.ratio,
         "recipe": args.recipe,
+        "starter_grams": args.starter_grams,
     }
-    if args.ratio is not None:
-        entry["ratio"] = args.ratio
-    if args.starter_grams is not None:
-        entry["starter_grams"] = args.starter_grams
-    if args.notes is not None:
-        entry["notes"] = args.notes
-    return entry
 
 
 def main() -> None:
@@ -65,9 +63,11 @@ def main() -> None:
     parser.add_argument("--peak-time", default="", dest="peak_time", help="Peak time ISO string (default: empty)")
     parser.add_argument("--active-time", default="", dest="active_time", help="Active time (default: empty)")
     parser.add_argument("--active-end-time", default="", dest="active_end_time", help="Active end time (default: empty)")
-    parser.add_argument("--ratio", default=None, help="Feeding ratio, e.g. '1:3.25:3.25'")
-    parser.add_argument("--starter-grams", default=None, dest="starter_grams", help="Starter weight in grams")
-    parser.add_argument("--notes", default=None, help="Optional notes")
+    parser.add_argument("--ratio", default="", help="Feeding ratio, e.g. '1:3.25:3.25'")
+    parser.add_argument("--starter-grams", default="", dest="starter_grams", help="Starter weight in grams")
+    parser.add_argument("--note", default="", help="Single note (default: empty)")
+    parser.add_argument("--notes", default="", help="Notes (default: empty)")
+    parser.add_argument("--incomplete-record", default="", dest="incomplete_record", help="Incomplete record flag (default: empty)")
     parser.add_argument(
         "--manifest",
         type=pathlib.Path,
