@@ -1,6 +1,7 @@
 """Append a new feed entry to the sourdough starter manifest."""
 
 import argparse
+import dateparser
 import datetime
 import json
 import pathlib
@@ -21,45 +22,12 @@ def parse_time(value: str) -> datetime.time:
     )
 
 
-def parse_relative_date(value: str) -> datetime.date | None:
-    import re
-
-    today = datetime.date.today()
-    v = value.strip().lower()
-
-    if v == "today":
-        return today
-    if v == "yesterday":
-        return today - datetime.timedelta(days=1)
-    if v == "tomorrow":
-        return today + datetime.timedelta(days=1)
-
-    m = re.fullmatch(r"(\d+)\s+days?\s+ago", v)
-    if m:
-        return today - datetime.timedelta(days=int(m.group(1)))
-
-    m = re.fullmatch(r"(\d+)\s+days?\s+from\s+now", v)
-    if m:
-        return today + datetime.timedelta(days=int(m.group(1)))
-
-    m = re.fullmatch(r"in\s+(\d+)\s+days?", v)
-    if m:
-        return today + datetime.timedelta(days=int(m.group(1)))
-
-    return None
-
-
 def parse_date(value: str) -> datetime.date:
-    relative = parse_relative_date(value)
-    if relative is not None:
-        return relative
-    for fmt in ("%Y-%m-%d", "%m/%d/%Y", "%m/%d/%y"):
-        try:
-            return datetime.datetime.strptime(value, fmt).date()
-        except ValueError:
-            continue
+    result = dateparser.parse(value, settings={"RETURN_AS_TIMEZONE_AWARE": False})
+    if result is not None:
+        return result.date()
     raise argparse.ArgumentTypeError(
-        f"Cannot parse date {value!r}. Use format 'YYYY-MM-DD' or relative terms like 'yesterday', '2 days ago'."
+        f"Cannot parse date {value!r}."
     )
 
 
