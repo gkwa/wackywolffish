@@ -13,7 +13,7 @@ DEFAULT_RECIPE = "arachnophobia"
 def parse_time(value: str) -> datetime.time:
     for fmt in ("%I:%M%p", "%I:%M %p", "%H:%M:%S", "%H:%M"):
         try:
-            return datetime.datetime.strptime(value.strip().upper(), fmt.upper()).time()
+            return datetime.datetime.strptime(value.strip().upper(), fmt).time()
         except ValueError:
             continue
     raise argparse.ArgumentTypeError(
