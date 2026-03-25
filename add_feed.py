@@ -1,4 +1,8 @@
 """Append a new feed entry to the sourdough starter manifest."""
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["dateparser>=1.2"]
+# ///
 
 import argparse
 import dateparser
