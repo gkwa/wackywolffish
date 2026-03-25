@@ -7,7 +7,6 @@ import json
 import pathlib
 import sys
 
-MANIFEST = pathlib.Path(__file__).parent / "sourdough-starter-manifest.json"
 DEFAULT_RECIPE = "arachnophobia"
 
 
@@ -70,8 +69,8 @@ def main() -> None:
     parser.add_argument(
         "--manifest",
         type=pathlib.Path,
-        default=MANIFEST,
-        help="Path to manifest JSON file",
+        required=True,
+        help="Absolute path to manifest JSON file",
     )
     args = parser.parse_args()
 
