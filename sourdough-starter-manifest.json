@@ -828,6 +828,30 @@
       "ratio": "1:1.89:1.89",
       "recipe": "arachnophobia",
       "starter_grams": "36"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2026-03-24T21:32:00",
+      "incomplete_record": "",
+      "note": "",
+      "notes": "",
+      "peak_time": "",
+      "ratio": "1:4:4",
+      "recipe": "arachnophobia",
+      "starter_grams": "18"
+    },
+    {
+      "active_end_time": "",
+      "active_time": "",
+      "feed_time": "2026-03-25T20:23:00",
+      "incomplete_record": "",
+      "note": "",
+      "notes": "",
+      "peak_time": "",
+      "ratio": "1:11.29:11.29",
+      "recipe": "arachnophobia",
+      "starter_grams": "17"
     }
   ]
 }
