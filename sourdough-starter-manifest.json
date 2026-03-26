@@ -328,22 +328,22 @@
     {
       "active_time": "2025-09-18T03:55:07",
       "feed_time": "2025-09-17T17:51:14",
+      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though.",
       "peak_time": "2025-09-18T19:27:22",
       "ratio": "1:10:10",
       "recipe": "arachnophobia",
       "sequence": 27,
-      "starter_grams": "5",
-      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though."
+      "starter_grams": "5"
     },
     {
       "active_end_time": "",
       "active_time": "2025-09-19T07:34:37",
       "feed_time": "2025-09-18T20:57:30",
+      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though.",
       "peak_time": "2025-09-19T19:01:24",
       "ratio": "1:5.1:5.1",
       "recipe": "arachnophobia",
-      "starter_grams": "10",
-      "note": "I stopped filming this before active end time happened.  There was nothing wrong with it though."
+      "starter_grams": "10"
     },
     {
       "active_end_time": "2025-09-20T22:38:17",
@@ -373,21 +373,21 @@
       "starter_grams": "20"
     },
     {
-      "incomplete_record": true,
       "active_end_time": "",
       "active_time": "2025-09-24T05:11:50",
       "feed_time": "2025-09-23T21:02:43",
+      "incomplete_record": true,
+      "note": "I discarded this before it peaked.  There was nothing wrong with it though.",
       "peak_time": "",
       "ratio": "1:1:1",
       "recipe": "arachnophobia",
-      "starter_grams": "20",
-      "note": "I discarded this before it peaked.  There was nothing wrong with it though."
+      "starter_grams": "20"
     },
     {
-      "incomplete_record": true,
       "active_end_time": "",
       "active_time": "2025-09-24T16:10:32",
       "feed_time": "2025-09-24T14:25:30",
+      "incomplete_record": true,
       "peak_time": "2025-09-25T05:59:08",
       "ratio": "1:3.07:3.07",
       "recipe": "arachnophobia",
@@ -466,11 +466,11 @@
       "starter_grams": "25"
     },
     {
-      "note": "phone battery died half way through recording this",
-      "incomplete_record": true,
       "active_end_time": "",
       "active_time": "2025-10-14T20:46:06",
       "feed_time": "2025-10-14T19:40:06",
+      "incomplete_record": true,
+      "note": "phone battery died half way through recording this",
       "peak_time": "",
       "ratio": "1:1.19:1.19",
       "recipe": "arachnophobia",
@@ -747,11 +747,11 @@
       "starter_grams": "69"
     },
     {
-      "incomplete_record": true,
-      "notes": "",
       "active_end_time": "",
       "active_time": "",
       "feed_time": "2025-12-05T06:17:32",
+      "incomplete_record": true,
+      "notes": "",
       "peak_time": "2025-12-05T02:34:00",
       "ratio": "1:60:60",
       "recipe": "arachnophobia",
